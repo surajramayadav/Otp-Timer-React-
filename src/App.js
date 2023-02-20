@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+export default function App() {
+  let clearinterval;
 
-function App() {
+
+
+  const trigger = (initialTime) => {
+    const dfifference = initialTime - +new Date()
+    if (dfifference >= 0) {
+      console.log(Math.round(dfifference / 1000))
+    } else {
+      clearinterval(clearinterval)
+    }
+
+  }
+
+  React.useEffect(() => {
+    console.log(new Date())
+    const initialTime = +new Date() + 120 * 1000;
+    setInterval(() => trigger(initialTime), 1000);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
     </div>
   );
 }
-
-export default App;
